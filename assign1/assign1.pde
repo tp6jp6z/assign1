@@ -1,3 +1,5 @@
+// test gor git
+
 SlotMachine machine;
 boolean rolling = false;
 // button information
