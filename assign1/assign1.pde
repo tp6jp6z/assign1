@@ -1,5 +1,3 @@
-// test gor git
-
 SlotMachine machine;
 boolean rolling = false;
 // button information
@@ -11,8 +9,10 @@ int h = 50;
 
 // declare variables
 // --------------------------------------------
+
 // put your code inside here
-int totalScore = 0;
+int totalScore = 500;
+
 
 // --------------------------------------------
 
@@ -49,9 +49,8 @@ void draw() {
       rolling = true;
       // start rolling
       // -------------------------------------------------
-      // put your code inside here
-      
-      
+      totalScore -= 50;
+
       // -------------------------------------------------
     }
     machine.roll();
@@ -63,11 +62,31 @@ void draw() {
       rolling = false;
       // stop rolling
       // -------------------------------------------------
-      // put your code inside here
       
- 
- 
- 
+      // setSlotFruit
+      float sevenProbability= pow(0.1,1/3.0);
+      int result1= machine.probability(1-(float)sevenProbability);
+      int result2= machine.probability(1-(float)sevenProbability);
+      int result3= machine.probability(1-(float)sevenProbability);
+      
+      int d= int(random(1,6)) *result1;
+      int e= int(random(1,6)) *result2;
+      int f= int(random(1,6)) *result3;
+      machine.setSlotFruit(0,d);
+      machine.setSlotFruit(1,e);
+      machine.setSlotFruit(2,f);
+      
+      // getSlotScore
+      int a= machine.getSlotScore(d);
+      int b= machine.getSlotScore(e);
+      int c= machine.getSlotScore(f);
+      
+      int m= machine.getFruitCount(d);
+      int n= machine.getFruitCount(e);
+      int o= machine.getFruitCount(f);
+      
+      //totalScore
+      totalScore += (a*m + b*n + c*o);
       
       // -------------------------------------------------
     }
